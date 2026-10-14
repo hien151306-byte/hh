@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành tạo Menu dọc Dropdown</title>
+    <style>
+        /* 1. Thiết lập font chữ chung và reset lề cho tài liệu */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background-color: #f4f6f8;
+        }
+
+        /* 2. Định dạng khung chứa menu chính (div#menu) và các danh sách ul lồng nhau */
+        #menu ul {
+            padding: 0;
+            margin: 0;
+            list-style: none; /* Bỏ ký hiệu đánh dấu đầu mục */
+        }
+
+        /* 3. Định dạng cho tất cả các phần tử trong danh sách (li) */
+        #menu li {
+            list-style: none;
+            position: relative;          /* Cho phép định vị danh sách con tương đối theo li chứa nó */
+            width: 140px;                /* Cố định chiều rộng */
+            height: 35px;                /* Cố định chiều cao */
+            padding: 0 15px;             /* Khoảng cách trái/phải bên trong */
+            background-color: #2c3e50;   /* Màu nền mặc định (tông xám đậm hiện đại) */
+            line-height: 35px;           /* Cố định chiều cao dòng để căn giữa chữ theo chiều dọc */
+            cursor: pointer;             /* Đổi con trỏ thành hình bàn tay khi rê vào */
+            margin-bottom: 2px;          /* Tạo khoảng cách nhỏ giữa các mục */
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        /* 4. Định dạng liên kết bên trong danh sách (thẻ a) */
+        #menu a {
+            text-decoration: none;       /* Bỏ gạch chân của liên kết */
+            color: #ffffff;              /* Đổi màu chữ liên kết sang màu trắng */
+            display: block;              /* Giúp thẻ a nhận toàn bộ kích thước của thẻ li */
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 5. Hiệu ứng đổi màu nền khi đưa chuột qua phần tử (li:hover) */
+        #menu li:hover {
+            background-color: #3498db;   /* Đổi sang màu xanh khi hover */
+        }
+
+        /* 6. Định dạng cho các danh sách con (dropdown menu bên trong) */
+        #menu li ul {
+            position: absolute;          /* Cố định vị trí xuất hiện của danh sách con */
+            top: 0;                      /* Căn ngang bằng đỉnh của thẻ li chứa nó */
+            left: 155px;                 /* Đẩy sang phải một khoảng bằng chiều rộng li + lề để hiển thị cạnh bên */
+            visibility: hidden;          /* Mặc định ẩn danh sách con đi */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 7. Hiển thị danh sách con khi đưa con trỏ qua phần tử của danh sách ngoài */
+        #menu li:hover > ul {
+            visibility: visible;         /* Kích hoạt hiển thị danh sách con tương ứng */
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="color: #2c3e50; margin-bottom: 20px;">Thực hành Menu Dọc Dropdown</h2>
+
+    <!-- Cấu trúc HTML của menu dọc -->
+    <div id="menu">
+        <ul>
+            <li><a href="#home">Trang chủ</a></li>
+            <li>
+                <a href="#products">Sản phẩm &raquo;</a>
+                <!-- Danh sách con (Dropdown menu) -->
+                <ul>
+                    <li><a href="#laptop">Laptop</a></li>
+                    <li><a href="#phone">Điện thoại</a></li>
+                    <li><a href="#tablet">Máy tính bảng</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#services">Dịch vụ &raquo;</a>
+                <!-- Danh sách con (Dropdown menu cấp 2 nếu có) -->
+                <ul>
+                    <li><a href="#design">Thiết kế Web</a></li>
+                    <li><a href="#seo">Tối ưu SEO</a></li>
+                </ul>
+            </li>
+            <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
