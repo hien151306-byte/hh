@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Customer Survey Form - Wufoo Style</title>
+    <style>
+        body {
+            font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 8px solid #0073e6;
+        }
+        h2 {
+            color: #222;
+            margin-top: 0;
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+        .form-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 15px;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        label.main-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-size: 14.5px;
+        }
+        .required {
+            color: #d9534f;
+            margin-left: 3px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #0073e6;
+            box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.15);
+            outline: none;
+        }
+        .name-row {
+            display: flex;
+            gap: 15px;
+        }
+        .name-row .field-wrap {
+            flex: 1;
+        }
+        .name-row label {
+            font-weight: normal;
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+            display: block;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .radio-group label, .checkbox-group label {
+            font-weight: normal;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #444;
+        }
+        .rating-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .rating-table th, .rating-table td {
+            border: 1px solid #e1e8ed;
+            padding: 10px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .rating-table th {
+            background-color: #f8f9fa;
+            color: #333;
+            font-weight: 600;
+        }
+        .rating-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: #444;
+            width: 40%;
+        }
+        textarea {
+            resize: vertical;
+            height: 110px;
+        }
+        .btn-container {
+            margin-top: 35px;
+        }
+        input[type="submit"] {
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        input[type="submit"]:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Customer Survey</h2>
+    <div class="form-subtitle">Please take a moment to give us your feedback. Your input helps us improve our products and services.</div>
+
+    <form method="post" action="">
+        
+        <!-- Name -->
+        <div class="form-group">
+            <label class="main-label">Name <span class="required">*</span></label>
+            <div class="name-row">
+                <div class="field-wrap">
+                    <input type="text" name="first_name" required>
+                    <label>First</label>
+                </div>
+                <div class="field-wrap">
+                    <input type="text" name="last_name" required>
+                    <label>Last</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label class="main-label" for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Website -->
+        <div class="form-group">
+            <label class="main-label" for="website">Web Address</label>
+            <input type="url" id="website" name="website" placeholder="http://">
+        </div>
+
+        <!-- Rating Matrix / Likert Scale -->
+        <div class="form-group">
+            <label class="main-label">Please rate your overall experience with our company:</label>
+            <table class="rating-table">
+                <tr>
+                    <th></th>
+                    <th>Very Unsatisfied</th>
+                    <th>Unsatisfied</th>
+                    <th>Neutral</th>
+                    <th>Satisfied</th>
+                    <th>Very Satisfied</th>
+                </tr>
+                <tr>
+                    <td>Customer Support</td>
+                    <td><input type="radio" name="support_rating" value="1"></td>
+                    <td><input type="radio" name="support_rating" value="2"></td>
+                    <td><input type="radio" name="support_rating" value="3"></td>
+                    <td><input type="radio" name="support_rating" value="4"></td>
+                    <td><input type="radio" name="support_rating" value="5"></td>
+                </tr>
+                <tr>
+                    <td>Product Quality</td>
+                    <td><input type="radio" name="quality_rating" value="1"></td>
+                    <td><input type="radio" name="quality_rating" value="2"></td>
+                    <td><input type="radio" name="quality_rating" value="3"></td>
+                    <td><input type="radio" name="quality_rating" value="4"></td>
+                    <td><input type="radio" name="quality_rating" value="5"></td>
+                </tr>
+                <tr>
+                    <td>Overall Value</td>
+                    <td><input type="radio" name="value_rating" value="1"></td>
+                    <td><input type="radio" name="value_rating" value="2"></td>
+                    <td><input type="radio" name="value_rating" value="3"></td>
+                    <td><input type="radio" name="value_rating" value="4"></td>
+                    <td><input type="radio" name="value_rating" value="5"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Multiple Choice / Radio -->
+        <div class="form-group">
+            <label class="main-label">How did you hear about us?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="referral" value="search"> Search Engine (Google, Bing, etc.)</label>
+                <label><input type="radio" name="referral" value="social"> Social Media</label>
+                <label><input type="radio" name="referral" value="friend"> Friend or Colleague</label>
+                <label><input type="radio" name="referral" value="other"> Other</label>
+            </div>
+        </div>
+
+        <!-- Comments / Textarea -->
+        <div class="form-group">
+            <label class="main-label" for="comments">Any comments or suggestions?</label>
+            <textarea id="comments" name="comments" placeholder="Write your feedback here..."></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="btn-container">
+            <input type="submit" value="Submit Survey">
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
