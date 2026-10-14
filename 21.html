@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang web tổng hợp bài tập CSS</title>
+    
+    <!-- CSS được gộp trực tiếp vào trong thẻ style -->
+    <style>
+        /* --- PHẦN CHUNG & MÀU NỀN TOÀN TRANG --- */
+        body {
+            background-color: #f0f4f8; /* Màu nền tổng thể trang web */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333333;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- BÀI TẬP 1: Bộ chọn CSS (Selectors) --- */
+
+        /* Căn giữa và định dạng tiêu đề <h1> (id selector) */
+        #main-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Định dạng đoạn văn mô tả bản thân (class selector) */
+        .about-text {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555555;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+
+        /* Định dạng danh sách sở thích */
+        .hobby-list {
+            list-style-type: square;
+            max-width: 300px;
+            margin: 0 auto 30px auto;
+            padding: 20px 20px 20px 40px;
+            background: #fdfdfd;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+        }
+
+        /* Định dạng màu sắc khác nhau cho từng phần tử trong danh sách (pseudo-class: nth-child) */
+        .hobby-item:nth-child(1) {
+            color: #e74c3c; /* Màu đỏ */
+            padding: 5px 0;
+        }
+
+        .hobby-item:nth-child(2) {
+            color: #3498db; /* Màu xanh dương */
+            padding: 5px 0;
+        }
+
+        .hobby-item:nth-child(3) {
+            color: #27ae60; /* Màu xanh lá */
+            padding: 5px 0;
+        }
+
+        /* Định dạng nút bấm và hiệu ứng hover */
+        .action-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        /* Hover effect cho nút bấm */
+        .action-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* --- BÀI TẬP 2: Màu nền và Ảnh nền cho khối div --- */
+
+        .section-container h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666666;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+
+        /* Khối <div> chứa ảnh nền (background-image) */
+        .hero-section {
+            /* Thêm ảnh nền kết hợp lớp phủ tối màu giúp chữ dễ đọc hơn */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            /* Thiết lập kích thước và căn giữa khối div */
+            width: 100%;
+            height: 300px;
+            margin: 0 auto;
+            border-radius: 8px;
+            
+            /* Sử dụng Flexbox để căn giữa nội dung bên trong khối div theo cả 2 chiều */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Định dạng phần nội dung bên trong khối div có ảnh nền */
+        .content-box {
+            text-align: center;
+            color: #ffffff;
+            padding: 20px;
+            max-width: 600px;
+        }
+
+        .content-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .content-box p {
+            font-size: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PHẦN 1: Bài tập Bộ chọn CSS -->
+    <header class="section-container">
+        <!-- Tiêu đề chính sử dụng ID selector -->
+        <h1 id="main-title">Trang web của tôi</h1>
+
+        <!-- Đoạn văn mô tả bản thân sử dụng Class selector -->
+        <p class="about-text">Xin chào! Mình là một lập trình viên đang học tập và phát triển các ứng dụng web. Mình rất thích khám phá công nghệ mới và xây dựng những sản phẩm thú vị.</p>
+
+        <!-- Danh sách sở thích sử dụng class & pseudo-class -->
+        <ul class="hobby-list">
+            <li class="hobby-item">Đọc sách công nghệ</li>
+            <li class="hobby-item">Lập trình và giải thuật</li>
+            <li class="hobby-item">Chơi game giải trí</li>
+        </ul>
+
+        <!-- Nút bấm tương tác với hiệu ứng hover -->
+        <button class="action-btn">Nhấn vào đây</button>
+    </header>
+
+    <!-- PHẦN 2: Bài tập Màu nền và Ảnh nền -->
+    <section class="section-container">
+        <h2>Chào mừng đến với trang web của tôi</h2>
+        <p class="description">Trang web này được thiết kế để luyện tập sử dụng các thuộc tính màu nền và ảnh nền trong CSS, giúp giao diện trở nên sinh động và bắt mắt hơn.</p>
+
+        <!-- Khối div chứa ảnh nền và nội dung quan trọng -->
+        <div class="hero-section">
+            <div class="content-box">
+                <h3>Nội dung quan trọng</h3>
+                <p>Khối này sử dụng ảnh nền kết hợp với lớp phủ tối màu để làm nổi bật thông điệp chính.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
