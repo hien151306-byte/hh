@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Xem Phim Hoạt Hình Trực Tuyến</title>
+    <style>
+        /* --- 1. CSS CƠ BẢN & RESET --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            color: #333333;
+            padding-top: 70px; /* Đẩy nội dung xuống để tránh bị header cố định che */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- 2. HEADER CỐ ĐỊNH & HEAD-LINK --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a2e;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container h1 {
+            font-size: 1.5rem;
+            color: #e94560;
+            letter-spacing: 1px;
+        }
+
+        .head-link ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .head-link a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease, font-weight 0.3s ease;
+        }
+
+        /* Hiệu ứng rê chuột: Bôi đậm và đổi màu chữ */
+        .head-link a:hover {
+            color: #e94560;
+            font-weight: bold;
+        }
+
+        /* --- 3. BỐ CỤC CONTENT (LEFT & RIGHT CONTENT) --- */
+        .content-container {
+            display: flex;
+            flex: 1;
+            max-width: 1400px;
+            width: 100%;
+            margin: 20px auto;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        /* Left Content: Danh sách video / Menu */
+        .left-content {
+            width: 320px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+
+        .left-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: #1a1a2e;
+            border-bottom: 2px solid #e94560;
+            padding-bottom: 5px;
+        }
+
+        .video-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .video-item {
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            border-left: 4px solid transparent;
+        }
+
+        .video-item:hover {
+            background-color: #eaeef3;
+            border-left-color: #e94560;
+            transform: translateX(3px);
+        }
+
+        .video-item.active {
+            background-color: #e94560;
+            color: #ffffff;
+            border-left-color: #1a1a2e;
+        }
+
+        .video-title-item {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .video-info-item {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .video-item.active .video-info-item {
+            color: #f1f1f1;
+        }
+
+        /* Right Content: Khu vực xem video */
+        .right-content {
+            flex: 1;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .video-player-box {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Tỷ lệ khung hình 16:9 */
+            height: 0;
+            background-color: #000;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .video-player-box iframe,
+        .video-player-box video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .current-video-details {
+            margin-top: 15px;
+        }
+
+        .current-video-details h2 {
+            font-size: 1.4rem;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .current-video-details p {
+            color: #555;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        /* --- 4. FOOTER --- */
+        .main-footer {
+            background-color: #1a1a2e;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        /* --- 5. RESPONSIVE DESIGN (NÂNG CAO) --- */
+        @media screen and (max-width: 900px) {
+            .content-container {
+                flex-direction: column;
+            }
+
+            .left-content {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .main-header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .head-link ul {
+                gap: 15px;
+            }
+
+            body {
+                padding-top: 110px; /* Điều chỉnh khoảng cách cho header 2 dòng trên mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Head-link -->
+    <header class="main-header">
+        <div class="logo-container">
+            <h1>ToonStream</h1>
+        </div>
+        <nav class="head-link">
+            <ul>
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Danh mục phim</a></li>
+                <li><a href="#">Mới cập nhật</a></li>
+                <li><a href="#">Phổ biến</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Content chính (Bố cục 2 cột Left & Right) -->
+    <div class="content-container">
+        
+        <!-- Left Content: Danh sách video -->
+        <div class="left-content">
+            <h3>Danh sách phát (Thuyết minh)</h3>
+            <ul class="video-list">
+                <li class="video-item active" onclick="changeVideo('https://www.youtube.com/embed/ScMzIvxBSi4', 'Thế Giới Hoàn Mỹ - Tập 1 (Thuyết Minh)', 'Bộ phim hoạt hình 3D đỉnh cao thuộc thể loại tu tiên, hành động mãn nhãn với chất lượng FullHD 1080p.')">
+                    <div class="video-title-item">Thế Giới Hoàn Mỹ - Tập 1</div>
+                    <div class="video-info-item">150K lượt xem • Mới cập nhật</div>
+                </li>
+                <li class="video-item" onclick="changeVideo('https://www.youtube.com/embed/jNQXAC9IVRw', 'Đấu Phá Thương Khung - Đặc Biệt', 'Hành trình tiêu viêm phấn đấu trở thành cường giả Đấu Khí Đại Lục. Hoạt hình sắc nét, không quảng cáo.')">
+                    <div class="video-title-item">Đấu Phá Thương Khung</div>
+                    <div class="video-info-item">320K lượt xem • Hot nhất</div>
+                </li>
+                <li class="video-item" onclick="changeVideo('https://www.youtube.com/embed/tgbNymZ7vqY', 'Phàm Nhân Tông Môn - Ngoại Truyện', 'Han Li bước chân vào con đường tu tiên đầy gian nan thử thách với kỹ xảo hoành tráng chuẩn HD 720p.')">
+                    <div class="video-title-item">Phàm Nhân Tu Tiên</div>
+                    <div class="video-info-item">98K lượt xem • Cập nhật hôm nay</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Right Content: Khu vực phát video -->
+        <div class="right-content">
+            <div class="video-player-box">
+                <!-- Nhúng video YouTube bằng thẻ iframe không quảng cáo -->
+                <iframe id="videoPlayer" src="https://www.youtube.com/embed/ScMzIvxBSi4" title="Video Player" allowfullscreen></iframe>
+            </div>
+            <div class="current-video-details">
+                <h2 id="videoTitle">Thế Giới Hoàn Mỹ - Tập 1 (Thuyết Minh)</h2>
+                <p id="videoDesc">Bộ phim hoạt hình 3D đỉnh cao thuộc thể loại tu tiên, hành động mãn nhãn với chất lượng FullHD 1080p.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2026 ToonStream - Website xem phim hoạt hình trực tuyến an toàn & chất lượng cao. Không quảng cáo.</p>
+    </footer>
+
+    <!-- JavaScript hỗ trợ chuyển đổi video khi click vào danh sách bên trái -->
+    <script>
+        function changeVideo(url, title, desc) {
+            // Thay đổi nguồn iframe video
+            document.getElementById('videoPlayer').src = url;
+            // Thay đổi tiêu đề và mô tả
+            document.getElementById('videoTitle').innerText = title;
+            document.getElementById('videoDesc').innerText = desc;
+
+            // Xử lý đổi class active cho danh sách
+            let items = document.querySelectorAll('.video-item');
+            items.forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
