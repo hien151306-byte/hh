@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bố Cục Website Cơ Bản - TechBlog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. HEADER: Chứa tiêu đề trang -->
+    <header class="header">
+        <h1>TECH BLOG ACADEMY</h1>
+        <p>Nền tảng học lập trình web cơ bản và thực chiến</p>
+    </header>
+
+    <!-- 2. NAVIGATION MENU: Chứa 4 mục điều hướng -->
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Khóa học</a></li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </nav>
+
+    <!-- 3. CONTENT SECTION: Văn bản mô tả và hình ảnh -->
+    <main class="content-container">
+        
+        <!-- Khối nội dung chính (Bài viết + Hình ảnh) -->
+        <section class="main-feature">
+            <div class="feature-text">
+                <h2>Học HTML & CSS Từ Cơ Bản Đến Nâng Cao</h2>
+                <p>
+                    Việc nắm vững cấu trúc của một trang web là bước đầu tiên và quan trọng nhất 
+                    để trở thành một nhà phát triển giao diện (Front-end Developer). Một bố cục rõ ràng 
+                    giúp người dùng dễ dàng tìm kiếm thông tin và cải thiện trải nghiệm duyệt web.
+                </p>
+                <p>
+                    Bố cục chuẩn thường bao gồm 4 thành phần cốt lõi: Header định danh thương hiệu, 
+                    Navigation điều hướng luồng đi, Content truyền tải giá trị và Footer cung cấp thông tin pháp lý.
+                </p>
+            </div>
+            <div class="feature-image">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&auto=format&fit=crop&q=80" alt="Hình ảnh minh họa lập trình">
+            </div>
+        </section>
+
+        <!-- Khối nội dung phụ (3 cột bố cục bài viết) -->
+        <section class="sub-content">
+            <div class="box">
+                <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&auto=format&fit=crop&q=80" alt="HTML5">
+                <h3>Cấu trúc HTML5</h3>
+                <p>Sử dụng các thẻ ngữ nghĩa như header, nav, main, section, footer để xây dựng khung xương vững chắc cho trang web.</p>
+            </div>
+            <div class="box">
+                <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=400&auto=format&fit=crop&q=80" alt="CSS3">
+                <h3>Bố cục với CSS3</h3>
+                <p>Kết hợp Flexbox và CSS Grid để căn chỉnh các khối nội dung gọn gàng, cân đối trên mọi kích thước màn hình.</p>
+            </div>
+            <div class="box">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&auto=format&fit=crop&q=80" alt="UI/UX">
+                <h3>Tối ưu Giao diện</h3>
+                <p>Phân chia khoảng trắng (padding, margin) và màu sắc hợp lý để làm nổi bật nội dung chính.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 4. FOOTER: Chứa thông tin bản quyền -->
+    <footer class="footer">
+        <p>&copy; 2026 Tech Blog Academy. All rights reserved. Thiết kế phục vụ bài tập thực hành HTML & CSS.</p>
+    </footer>
+
+</body>
+</html>
+/* Reset mặc định giúp giao diện đồng nhất trên mọi trình duyệt */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 1. ĐỊNH DẠNG HEADER */
+.header {
+    background-color: #1e293b;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.header p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+}
+
+/* 2. ĐỊNH DẠNG NAVIGATION MENU */
+.navbar {
+    background-color: #0f172a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.nav-list li a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.nav-list li a:hover {
+    background-color: #3b82f6;
+}
+
+/* 3. ĐỊNH DẠNG CONTENT SECTION */
+.content-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Khối bài viết chính + ảnh nằm ngang */
+.main-feature {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+.feature-text h2 {
+    color: #1e293b;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+.feature-text p {
+    margin-bottom: 12px;
+    color: #475569;
+    text-align: justify;
+}
+
+.feature-image {
+    flex: 1;
+}
+
+.feature-image img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Khối 3 cột nội dung phụ */
+.sub-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.box img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.box h3 {
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+
+.box p {
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+/* 4. ĐỊNH DẠNG FOOTER */
+.footer {
+    background-color: #1e293b;
+    color: #cbd5e1;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.95rem;
+}
